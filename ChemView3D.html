@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Molecule Viewer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo"><img src="images/logo.jpg" alt="" /></a>
+                <h1><a href="index.html">Molecule Viewer</a></h1>
+                <nav class="links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="ChemView2D.html">Full 2D Chem Viewer</a></li>
+                        <li><a href="ChemView3D.html">Full 3D Chem Viewer</a></li>
+                        <li><a href="ChemBuilder.html">Full Chem Builder</a></li>
+                    </ul>
+                </nav>
+                <nav class="main">
+                    <ul>
+                        <li class="search">
+                            <a class="fa-search" href="#search">Search</a>
+                            <form id="search" method="get" action="#">
+                                <input type="text" name="query" placeholder="Search" />
+                            </form>
+                        </li>
+                        <li class="menu">
+                            <a class="fa-bars" href="#menu">Menu</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <article class="main">
+            </article>        
+            <div class='main' style="width: 95%">
+                <p>
+                    Full 3D Chem Viewer is a useful widget to display molecule and other chemistry objects in three dimensional space.
+                </p>
+                <div id="chemViewer" style="width: 70%; height: 425px"
+                     data-widget="Kekule.ChemWidget.Viewer3D" data-enable-toolbar="true" data-auto-size="false" data-padding="20"
+                     data-toolbar-evoke-modes="[0]"
+                     data-chem-obj="url(#mol1)">
+                </div>
+                <div>
+                    <button id="btnOpenBabel" data-widget="Kekule.Widget.Button">Enable OpenBabel Formats</button>
+                    <span>
+                        Click this button to load OpenBabel library to support more chemical data formats.
+                        Check the load or save button in viewer to see the changes.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+    
+    <script src="static/Three.js"></script>
+    <script src="static/kekule/kekule.js?modules=chemWidget,openbabel"></script>
+    <link rel="stylesheet" type="text/css" href="static/kekule/themes/default/kekule.css" />
+
+    
+
+    <script name="mol1" id="mol1" type="chemical/x-mdl-molfile">
+Untitled Document-2
+  Kekule  07101201153D
+
+  6  5  0  0  0  0  0  0  0  0999 V2000
+   -0.3586    0.0000   -0.1337 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.0564    0.0000   -0.1337 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6779    0.0000   -1.1978 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6779    0.9530    0.3397 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.6779   -0.9530    0.3397 H   0  0  0  0  0  0  0  0  0  0  0  0
+    1.3358    0.0000    0.7858 H   0  0  0  0  0  0  0  0  0  0  0  0
+  1  2  1  0
+  1  3  1  0
+  1  4  1  0
+  1  5  1  0
+  2  6  1  0
+M  END
+	</script>
+
+    <script>
+        var chemViewer;
+        function init()
+        {
+            chemViewer = Kekule.Widget.getWidgetById('chemViewer');
+            Kekule.Widget.getWidgetById('btnOpenBabel').addEventListener('execute', function(e){
+                Kekule.IO.enableOpenBabelFormats();
+            });
+        }
+
+        Kekule.X.domReady(init);
+    </script>
+
+    </body>
+</html>
